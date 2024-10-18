@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Facturación</title>
+</head>
+<body>
+    <h1>Nueva Factura</h1>
+    <form action="{{ url_for('facturacion') }}" method="post">
+        <label for="documento">Ingrese el documento del cliente: </label>
+        <input type="text" name="documento">
+        <input type="submit" value="Facturar">
+    </form>
+</body>
+</html>

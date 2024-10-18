@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Buscar Cliente</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #444343;
+            text-align: center;
+        }
+        h2 {
+            color: rgb(255, 255, 255); /* Cambio de color a blanco */
+        }
+        .search-form {
+            margin: 20px auto;
+            width: 300px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+        .search-form label {
+            font-weight: bold;
+        }
+        .search-form input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box; /* Añadido para ajustar el tamaño correctamente */
+        }
+        .search-form input[type="submit"] {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+        .search-form input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h2>Buscar Cliente</h2>
+    <form class="search-form" method="POST" action="/doc_cliente">
+        <label for="doccliente">Número de Documento:</label>
+        <input type="text" id="doccliente" name="doccliente" placeholder="Ingrese el número de documento">
+        <br>
+        <input type="submit" value="Continuar">
+    </form>
+</body>
+</html>

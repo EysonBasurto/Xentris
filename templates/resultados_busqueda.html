@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Resultados de Búsqueda</title>
+</head>
+<body>
+    <h1>Resultados de Búsqueda</h1>
+    <table>
+        <tr>
+            <th>Documento</th>
+            <th>Tipo de Documento</th>
+            <th>Nombres</th>
+            <th>Apellidos</th>
+            <th>Dirección</th>
+            <th>Ciudad</th>
+            <th>Teléfono</th>
+        </tr>
+        {% for cliente in clientes %}
+        <tr>
+            <td>{{ cliente.Documento }}</td>
+            <td>{{ cliente.cod_tipo_documento }}</td>
+            <td>{{ cliente.Nombres }}</td>
+            <td>{{ cliente.Apellidos }}</td>
+            <td>{{ cliente.Direccion }}</td>
+            <td>{{ cliente.cod_ciudad }}</td>
+            <td>{{ cliente.Telefono }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

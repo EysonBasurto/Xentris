@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Registrar clientes</title>
+    <style>
+        .button {
+            background-color: #131212;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            display: inline-block;
+            border: none;
+            border-radius: 5px;
+            margin-top: 10px;
+            cursor: pointer;
+    }
+    </style>
+</head>
+<body style="background-color: #2e2d2d;">
+
+<h2 style="text-align: center; color: white;">Registrar clientes</h2>
+
+<div style="display: flex; justify-content: center; align-items: center; height: 80vh;">
+    <form method="POST" action="/registrar_clientes" style="background-color: white; padding: 20px; border-radius: 10px;">
+        <label for="doccliente">Ingresa Cedula:</label><br>
+        <input type="text" id="doccliente" name="doccliente"><br>
+        <label for="combo_tipo">Tipo de documento:</label><br>
+        <select id="combo_tipo" name="combo_tipo">
+            <option value="1">CC</option>
+            <option value="2">TI</option>
+            <option value="3">RC</option>
+            <!-- Agrega las opciones restantes aquí -->
+        </select><br>
+        <label for="nomcliente">Nombres:</label><br>
+        <input type="text" id="nomcliente" name="nomcliente"><br>
+        <label for="apellcliente">Apellidos:</label><br>
+        <input type="text" id="apellcliente" name="apellcliente"><br>
+        <label for="dircliente">Direccion:</label><br>
+        <input type="text" id="dircliente" name="dircliente"><br>
+        <label for="ciudad_combo">Ciudad:</label><br>
+        <select id="ciudad_combo" name="ciudad_combo">
+            <option value="1">QUITO</option>
+            <option value="2">GUAYAQUIL</option>
+            <option value="3">CUENCA</option>
+            <option value="4">MACHALA</option>
+            <option value="5">AMBATO</option>
+            <option value="6">MANTA</option>
+            <option value="7">PORTOVIEJO</option>
+            <option value="8">LOJA</option>
+            <option value="9">SANTO DOMINGO</option>
+            <option value="10">LATACUNGA</option>
+            <option value="11">ESMERALDAS</option>
+            <option value="12">IBARRA</option>
+            <option value="13">RIOBAMBA</option>
+            <option value="14">QUEVEDO</option>
+            <option value="15">DAULE</option>
+            <option value="16">MILAGRO</option>
+            <option value="17">ATACAMES</option>
+            <option value="18">MONTAÑITA</option>
+            <option value="19">SALINAS</option>
+            <option value="20">PUERTO AYORA</option>
+            <!-- Agrega las opciones restantes aquí -->
+        </select><br>
+        <label for="telefonocliente">Telefono:</label><br>
+        <input type="text" id="telefonocliente" name="telefonocliente"><br><br>
+        <input type="submit" value="Registrar" style="background-color: #333; color: white; border: none; padding: 10px 20px; cursor: pointer;">
+    </form>
+    <p>{{ mensaje }}</p>
+
+    
+</div>
+<div style="text-align: center;">
+    <a href="/" class="button">Regresar al Inicio</a>
+</div>
+</body>
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Agregar Artículo</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr@4.6.6/dist/flatpickr.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr@4.6.6/dist/flatpickr.min.js"></script>
+    <style>
+        body {
+            background-color: #333;
+            color: #fff;
+            font-family: Arial, sans-serif;
+        }
+        
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #444;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        }
+        label, input {
+            display: block;
+            margin-bottom: 10px;
+        }
+        input {
+            color: #000; /* Cambiar color del texto a negro */
+        }
+        button {
+            background-color: #ff9900;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #ffcc00;
+        }
+        .message {
+            background-color: #44aa44;
+            color: #fcfafa;
+            padding: 10px;
+            margin-top: 10px;
+            border-radius: 5px;
+            display: none;
+            text-align: center;
+        }
+        .alert {
+            background-color: #ff4444;
+            color: #fff;
+            padding: 10px;
+            margin-top: 10px;
+            border-radius: 5px;
+            display: none;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Agregar Nuevo Artículo</h1>
+        <form method="POST" action="/agregar_articulo">
+            <label for="descripcion">Descripción:</label>
+            <input type="text" id="descripcion" name="descripcion" required>
+
+            <label for="precio_venta">Precio de Venta:</label>
+            <input type="number" id="precio_venta" name="precio_venta" required>
+
+            <label for="precio_costo">Precio de Costo:</label>
+            <input type="number" id="precio_costo" name="precio_costo" required>
+
+            <label for="stock">Existencias:</label>
+            <input type="number" id="stock" name="stock" required>
+
+            <label for="id_articulo">ID de Artículo:</label>
+            <input type="text" id="id_articulo" name="id_articulo" required>
+
+            <label for="fecha_ingreso">Fecha de Ingreso:</label>
+            <input type="text" id="fecha_ingreso" name="fecha_ingreso" required>
+
+            <button type="submit" id="submitBtn">Agregar Artículo</button>
+            <a href="/" style="color: #ff9900; text-decoration: none; margin-left: 10px;">Regresar al Inicio</a>
+        </form>
+
+        <div class="alert" id="alertMessage">¡Artículo guardado con éxito!</div>
+
+        <script>
+            flatpickr('#fecha_ingreso', {
+                enableTime: false,
+                dateFormat: 'Y-m-d'
+            });
+
+            const alertMessage = document.getElementById('alertMessage');
+            const submitBtn = document.getElementById('submitBtn');
+
+            submitBtn.addEventListener('click', () => {
+                alertMessage.style.display = 'block';
+                
+                // Mostrar el mensaje durante 8 segundos (8000 milisegundos)
+                const interval = setInterval(() => {
+                    alertMessage.style.display = 'none';
+                    clearInterval(interval); // Detener el intervalo después de mostrar el mensaje
+                }, 8000); // Cambia este valor (en milisegundos) para ajustar la duración
+            });
+        </script>
+    </div>
+
+    <script>
+        // ...
+    </script>
+</body>
+</html>

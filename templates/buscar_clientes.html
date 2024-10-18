@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Buscar Clientes</title>
+    <style>
+        table {
+            background-color: rgb(255, 250, 250);
+            border-collapse: collapse;
+            width: 100%;
+            max-width: 800px;
+            margin: auto;
+            margin-top: 20px;
+        }
+
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #acaaaa;
+        }
+
+        .button {
+            background-color: #131212;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            display: inline-block;
+            border: none;
+            border-radius: 5px;
+            margin-top: 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body style="background-color: #202020;">
+
+<h2 style="text-align: center; color: white;">Buscar Clientes</h2>
+
+<!-- Tabla de todos los clientes -->
+<table>
+    <tr>
+        <th>Documento</th>
+        <th>Tipo de Documento</th>
+        <th>Nombres</th>
+        <th>Apellidos</th>
+        <th>Direccion</th>
+        <th>Ciudad</th>
+        <th>Telefono</th>
+    </tr>
+    {% for cliente in clientes %}
+    <tr>
+        <td>{{ cliente.Documento }}</td>
+        <td>{{ cliente.tipo_documento.Descripcion }}</td>
+        <td>{{ cliente.Nombres }}</td>
+        <td>{{ cliente.Apellidos }}</td>
+        <td>{{ cliente.Direccion }}</td>
+        <td>{{ cliente.ciudad.Nombre_ciudad }}</td>
+        <td>{{ cliente.Telefono }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+<!-- Tabla de búsqueda -->
+<form method="POST" action="/buscar_clientes" style="text-align: center; color: white;">
+    <label for="documento_buscar">Buscar Cliente por Documento:</label>
+    <input type="text" id="documento_buscar" name="documento_buscar">
+    <input type="submit" value="Buscar">
+</form>
+
+{% if clientes_busqueda %}
+<table>
+    <tr>
+        <th>Documento</th>
+        <th>Tipo de Documento</th>
+        <th>Nombres</th>
+        <th>Apellidos</th>
+        <th>Direccion</th>
+        <th>Ciudad</th>
+        <th>Telefono</th>
+    </tr>
+    {% for cliente in clientes_busqueda %}
+    <tr>
+        <td>{{ cliente.Documento }}</td>
+        <td>{{ cliente.tipo_documento.Descripcion }}</td>
+        <td>{{ cliente.Nombres }}</td>
+        <td>{{ cliente.Apellidos }}</td>
+        <td>{{ cliente.Direccion }}</td>
+        <td>{{ cliente.ciudad.Nombre_ciudad }}</td>
+        <td>{{ cliente.Telefono }}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% endif %}
+
+<br>
+<div style="text-align: center;">
+    <a href="/" class="button">Regresar al Inicio</a>
+</div>
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Actualizar Stock</title>
+    <style>
+        body {
+            background-color: #333;
+            color: #000; /* Cambiar color del texto a negro */
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #444;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        }
+        label, select, input {
+            display: block;
+            margin-bottom: 10px;
+            width: 100%; /* Asegura que los elementos llenen todo el ancho */
+        }
+        select {
+            padding: 10px; /* Aumenta el tamaño de la barra de búsqueda */
+        }
+        button {
+            background-color: #ff9900;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #ffcc00;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Actualizar Stock</h1>
+        <form method="POST" action="/actualizar_stock">
+            <label for="id_articulo">ID de Artículo:</label>
+            <select id="id_articulo" name="id_articulo">
+                {% for articulo in articulos %}
+                <option value="{{ articulo.id_articulo }}" data-descripcion="{{ articulo.descripcion }}" data-stock="{{ articulo.stock }}">{{ articulo.id_articulo }}</option>
+                {% endfor %}
+            </select>
+
+            <label for="descripcion">Descripción:</label>
+            <input type="text" id="descripcion" name="descripcion" readonly>
+
+            <label for="stock_actual">Stock actual:</label>
+            <input type="text" id="stock_actual" name="stock_actual" readonly>
+
+            <label for="nuevo_stock">Nuevo Stock:</label>
+            <input type="number" id="nuevo_stock" name="nuevo_stock" required>
+
+            <button type="submit" id="submitBtn">Actualizar Stock</button>
+        </form>
+
+        <a href="/" style="color: #ff9900;">Volver al Inicio</a>
+    </div>
+
+    <script>
+        const idArticuloSelect = document.getElementById('id_articulo');
+        const descripcionInput = document.getElementById('descripcion');
+        const stockActualInput = document.getElementById('stock_actual');
+
+        idArticuloSelect.addEventListener('change', () => {
+            const selectedOption = idArticuloSelect.options[idArticuloSelect.selectedIndex];
+            descripcionInput.value = selectedOption.dataset.descripcion;
+            stockActualInput.value = selectedOption.dataset.stock;
+        });
+    </script>
+</body>
+</html>

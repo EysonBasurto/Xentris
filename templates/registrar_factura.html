@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Registrar Factura</title>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #2e2d2d; margin: 0; display: flex; justify-content: center; align-items: center; height: 100vh; }
+        .form-wrapper { background-color: white; padding: 10px; border-radius: 10px; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); max-width: 600px; width: 100%; box-sizing: border-box; }
+        h2 { color: #007bff; text-align: center; margin-top: 0; }
+        label, select, input[type="text"], input[type="number"], input[type="date"], input[type="submit"] { width: 100%; padding: 5px; border: 1px solid #ccc; border-radius: 5px; margin-top: 3px; box-sizing: border-box; }
+        select, input[type="number"] { width: 50%; }
+        table { width: 100%; border-collapse: collapse; margin-top: 5px; }
+        th, td { border: 1px solid #ccc; padding: 3px; text-align: left; }
+        input[type="submit"] { background-color: #007bff; color: #fff; border: none; border-radius: 5px; padding: 5px; cursor: pointer; margin-top: 5px; }
+        input[type="submit"]:hover { background-color: #0056b3; }
+    </style>
+</head>
+<body>
+    <form method="POST" action="/registrar_factura" class="form-wrapper">
+        <h2>Registrar Factura</h2>
+        <input type="hidden" id="cod_cliente" name="cod_cliente" value="{{ cod_cliente }}">
+        <label for="Nnm_factura">Nº Factura:</label>
+        <input type="text" id="Nnm_factura" name="Nnm_factura" value="{{ Nnm_factura }}" readonly>
+        <label for="Nombre_empleado">Empleado:</label>
+        <input type="text" id="Nombre_empleado" name="Nombre_empleado">
+        <label for="Fecha_facturacion">Fecha:</label>
+        <input type="date" id="Fecha_facturacion" name="Fecha_facturacion">
+        <label for="cod_formapago">Forma Pago:</label>
+        <select id="cod_formapago" name="cod_formapago">
+            {% for forma_pago in formas_pago %}
+            <option value="{{ forma_pago.id_formapago }}">{{ forma_pago.id_formapago }} - {{ forma_pago.descripcion_formapago }}</option>
+            {% endfor %}
+        </select>
+        <label for="detalle_factura">Detalles Factura:</label>
+        <select id="detalle_factura" name="detalle_factura" multiple>
+            {% for articulo in articulos %}
+            <option value="{{ articulo.id_articulo }}">{{ articulo.descripcion }}</option>
+            {% endfor %}
+        </select>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Descripción</th>
+                    <th>Precio</th>
+                    <th>Cantidad</th>
+                    <th>Subtotal</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for articulo in articulos %}
+                <tr>
+                    <td>{{ articulo.id_articulo }}</td>
+                    <td>{{ articulo.descripcion }}</td>
+                    <td>{{ articulo.precio_venta }}</td>
+                    <td><input type="number" name="cantidad_articulo" value="0" min="0"></td>
+                    <td>Subtotal aquí</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <label for="IVA">IVA:</label>
+        <input type="text" id="IVA" name="IVA" value="0" readonly>
+        <label for="total_factura">Total:</label>
+        <input type="text" id="total_factura" name="total_factura" value="0" readonly>
+        <input type="submit" name="registrar_factura" value="Registrar">
+    </form>
+</body>
+</html>
